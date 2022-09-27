@@ -1,4 +1,4 @@
-defmodule FpElixir do
+defmodule Chapter2 do
   def total_price_goods(
         bread_slices,
         bread_slice_price,
@@ -7,9 +7,8 @@ defmodule FpElixir do
         cakes,
         cake_price
       ) do
-    result =
-      bread_slices * bread_slice_price + bottles_of_milk * bottle_of_milk_price +
-        cakes * cake_price
+    bread_slices * bread_slice_price + bottles_of_milk * bottle_of_milk_price +
+      cakes * cake_price
   end
 
   def distance_traveled(distance, time) do
