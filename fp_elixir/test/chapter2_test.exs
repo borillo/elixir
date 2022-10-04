@@ -30,10 +30,15 @@ defmodule Chapter2Test do
   end
 
   test "apply taxes" do
-    assert Chapter2.apply_tax(12.5) == "Price: 14.0 - Tax: 1.5"
-    assert Chapter2.apply_tax(30.99) == "Price: 34.7088 - Tax: 3.7188"
-    assert Chapter2.apply_tax(250.49) == "Price: 280.5488 - Tax: 30.0588"
-    assert Chapter2.apply_tax(18.0) == "Price: 20.16 - Tax: 2.16"
+    Enum.each(
+      [
+        {12.5, "Price: 14.0 - Tax: 1.5"},
+        {30.99, "Price: 34.7088 - Tax: 3.7188"},
+        {250.49, "Price: 280.5488 - Tax: 30.0588"},
+        {18.0, "Price: 20.16 - Tax: 2.16"}
+      ],
+      fn {value, expected} -> assert Chapter2.apply_tax(value) == expected end
+    )
   end
 
   test "boxes" do
