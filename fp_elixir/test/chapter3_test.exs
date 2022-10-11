@@ -1,10 +1,10 @@
 defmodule TicTacToe do
-  def winner({ a, _, _,
-               _, a, _,
-               _, _, a }), do: {:winner, a}
-  def winner({ _, a, _,
-               _, a, _,
-               _, a, _ }), do: {:winner, a}
+  def winner({a, _, _, _, a, _, _, _, a}),
+    do: {:winner, a}
+
+  def winner({_, a, _, _, a, _, _, a, _}),
+    do: {:winner, a}
+
   def winner(_), do: :no_winner
 end
 
@@ -13,22 +13,40 @@ defmodule Chapter3Test do
 
   test "total prices of goods" do
     assert TicTacToe.winner({
-      :x, :o, :x,
-      :o, :x, :o,
-      :o, :o, :x
-    }) == {:winner, :x}
+             :x,
+             :o,
+             :x,
+             :o,
+             :x,
+             :o,
+             :o,
+             :o,
+             :x
+           }) == {:winner, :x}
 
     assert TicTacToe.winner({
-      :o, :x, :x,
-      :x, :x, :o,
-      :o, :x, :o
-    }) == {:winner, :x}
+             :o,
+             :x,
+             :x,
+             :x,
+             :x,
+             :o,
+             :o,
+             :x,
+             :o
+           }) == {:winner, :x}
 
     assert TicTacToe.winner({
-      :x, :o, :x,
-      :o, :x, :o,
-      :o, :x, :o
-    }) ==:no_winner
+             :x,
+             :o,
+             :x,
+             :o,
+             :x,
+             :o,
+             :o,
+             :x,
+             :o
+           }) == :no_winner
   end
 
   test "guards" do
@@ -44,7 +62,7 @@ defmodule Chapter3Test do
       end
 
       def head([]), do: nil
-      def head([h | t]), do: h
+      def head([h | _]), do: h
     end
 
     assert NumberCompare.greater(8, 2) == 8
